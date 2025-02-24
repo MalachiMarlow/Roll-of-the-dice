@@ -1,36 +1,27 @@
-﻿Module Roll_Of_The_Dice
+﻿'Malachi Marlow
+'Spring 2025
+'RCET2265
+'Roll the Dice 
+'https://github.com/MalachiMarlow/Roll-of-the-dice.git
+Module Roll_Of_The_Dice
 
     Sub Main()
+        Console.WriteLine("Roll the dice".PadLeft(30))
+        Console.Write(StrDup(50, "_"))
+        Console.WriteLine()
+        Console.WriteLine("2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |")
 
+        randoDice()
     End Sub
 
-    Function diceTracker(dieRoll As Integer, die As Integer) As Boolean(,)
-        Static _diceTracker(14, 4) As Boolean
-        'actual code here
-        Return _diceTracker
-
-    End Function
-
     Sub randoDice()
-        Dim temp As String = "X |"
-        Dim heading() As String = {"Roll of the dice"}
-        For Each letter In heading
-            Console.Write(letter.PadLeft(2).PadRight(4))
-        Next
-        Console.WriteLine()
-        Console.WriteLine(StrDup(20, "_"))
-        For i = 1 To 15
-            For j = 1 To 5
-                temp = temp.PadLeft(4)
-                Console.Write(temp)
-            Next
-            Console.WriteLine()
+        For i = 0 To 11
+            Console.Write()
         Next
     End Sub
 
     Function randomNumberBetween(max As Integer, min As Integer) As Integer
         Dim temp As Single
-
         Randomize()
         temp = Rnd()
         'establish range
