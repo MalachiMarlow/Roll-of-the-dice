@@ -6,17 +6,21 @@
 Module Roll_Of_The_Dice
 
     Sub Main()
+        Dim diceRolls(12) As Integer
+
         Console.WriteLine("Roll the dice".PadLeft(30))
-        Console.Write(StrDup(50, "_"))
+        Console.Write(StrDup(68, "_"))
         Console.WriteLine()
-        Console.WriteLine("2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |")
+        Console.WriteLine("  2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |   10 |   11 |   12 |")
 
-        randoDice()
-    End Sub
+        For i = 1 To 1000
+            diceRolls(randomNumberBetween(1, 12)) += 1
+        Next
+        Console.Write(StrDup(68, "_"))
+        Console.WriteLine()
 
-    Sub randoDice()
-        For i = 0 To 11
-            Console.Write()
+        For i = 2 To UBound(diceRolls)
+            Console.Write($"{CStr(diceRolls(i)),4} |")
         Next
     End Sub
 
@@ -24,13 +28,9 @@ Module Roll_Of_The_Dice
         Dim temp As Single
         Randomize()
         temp = Rnd()
-        'establish range
-        temp *= (max + 1) - min 'makes range bigger by 1 to fix inclusivity max/min
-        temp += min - 1 'shifts range down so math.ceiling works
-        'Return CInt(temp) 'bad randomness
-        'Return CInt(Int(temp)) 'randomness ok but max is not included
-        Return CInt(Math.Floor(temp)) 'randomness ok but max is not included
-        'Return CInt(Math.Ceiling(temp)) 'randomness ok but min is not included
+        temp *= max - min
+        temp += min
+        Return CInt(temp)
     End Function
 
 End Module
